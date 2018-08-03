@@ -1,0 +1,20 @@
+{:online-code-executor-example.component/http {:port #long #or [#env PORT 3000]
+                                               :handler #ig/ref :online-code-executor-example.component/endpoint}
+ :online-code-executor-example.component/routes ["" [["/langs/php"
+                                                      [[:get :online-code-executor-example.handler.php/index]
+                                                       [:post :online-code-executor-example.handler.php/create]]]
+                                                     [true :online-code-executor-example.handler.not-found/index]]]
+ :online-code-executor-example.component/logger {:level #profile {:default :info
+                                                                  :dev :debug}}
+ :online-code-executor-example.component/endpoint
+ {:middleware #ig/ref :online-code-executor-example.component/middleware
+  :routes #ig/ref :online-code-executor-example.component/routes
+  :handlers {:online-code-executor-example.handler.php/index #ig/ref :online-code-executor-example.handler.php/index
+             :online-code-executor-example.handler.php/create #ig/ref :online-code-executor-example.handler.php/create
+             }}
+ :online-code-executor-example.component/middleware {:logger #ig/ref :online-code-executor-example.component/logger
+                                                     :dev? #profile {:dfault false :dev true}}
+ ;; Handlers
+ :online-code-executor-example.handler.php/index {:routes #ig/ref :online-code-executor-example.component/routes}
+ :online-code-executor-example.handler.php/create {:routes #ig/ref :online-code-executor-example.component/routes}
+ :online-code-executor-example.handler.not-found/index {}}
