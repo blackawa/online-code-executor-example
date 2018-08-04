@@ -14,6 +14,7 @@
              }}
  :online-code-executor-example.component/middleware {:logger #ig/ref :online-code-executor-example.component/logger
                                                      :dev? #profile {:dfault false :dev true}}
+ :online-code-executor-example.boundary/docker {:host "127.0.0.1" :port "2375"}
  ;; Handlers
  :online-code-executor-example.handler.php/index {:routes #ig/ref :online-code-executor-example.component/routes}
  :online-code-executor-example.handler.php/create {:routes #ig/ref :online-code-executor-example.component/routes}
