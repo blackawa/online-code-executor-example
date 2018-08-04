@@ -4,7 +4,7 @@
             [integrant.core :as ig]
             [muuntaja.middleware :refer [wrap-format]]
             [ring.adapter.jetty :as jetty]
-            [ring.middleware.defaults :refer [wrap-defaults api-defaults]]
+            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [taoensso.timbre :as timbre]))
 
 (defmethod ig/init-key ::http [_ {:keys [handler] :as opts}]
@@ -42,6 +42,6 @@
 
 (defmethod ig/init-key ::middleware [_ {:keys [logger dev?]}]
   (fn [handler] (-> handler
-                    (wrap-defaults api-defaults)
+                    (wrap-defaults site-defaults)
                     wrap-format
                     (wrap-log logger))))
