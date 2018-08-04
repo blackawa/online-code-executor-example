@@ -16,7 +16,8 @@
                  ;; others
                  [bidi "2.1.3"]
                  [com.taoensso/timbre "4.10.0"]
-                 [clj-http "3.9.1"]]
+                 [clj-http "3.9.1"]
+                 [org.clojure/data.json "0.2.6"]]
   :main ^:skip-aot online-code-executor-example.app
   :profiles {:uberjar {:aot :all}
              :dev {:dependencies [[integrant/repl "0.3.1"]

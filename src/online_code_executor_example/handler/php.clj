@@ -2,7 +2,8 @@
   (:require [bidi.bidi :as bidi]
             [integrant.core :as ig]
             [ring.util.anti-forgery :refer [anti-forgery-field]]
-            [rum.core :as rum]))
+            [rum.core :as rum]
+            [online-code-executor-example.boundary.docker :as docker]))
 
 (defn index-view
   ([action]
@@ -26,7 +27,7 @@
                                          routes
                                          :online-code-executor-example.handler.php/index)))}))
 
-(defmethod ig/init-key ::create [_ {:keys [routes]}]
+(defmethod ig/init-key ::create [_ {:keys [routes docker]}]
   (fn [{:keys [form-params] :as req}]
     {:status 200
      :headers {"Content-Type" "text/html"}
@@ -34,4 +35,4 @@
             (index-view
              (bidi/path-for routes
                             :online-code-executor-example.handler.php/index)
-             "hoge"))}))
+             (docker/execute docker "php" (:code form-params))))}))
