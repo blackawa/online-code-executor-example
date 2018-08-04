@@ -1,10 +1,10 @@
 # online-code-executor-example
 
-API project
+Online code executor(like [paiza](https://paiza.io/ja/projects/new) and [Online PHP functions](http://sandbox.onlinephpfunctions.com/)) example implementation in clojure.
 
 ## Development
 
-To start DB for development, run
+To start external componentse for development, run
 
     docker-compose up -d
 
@@ -14,9 +14,7 @@ To start application on your REPL, run
 
 You will get 200 OK from
 
-    http://localhost:3000
-
-You can see `swagger.yaml` to check API specification.
+    http://localhost:3000/langs/php
 
 ## Deployment
 
