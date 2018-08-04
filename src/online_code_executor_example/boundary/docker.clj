@@ -13,4 +13,5 @@
 (extend-protocol DockerCodeExecutor
   Docker
   (find [this lang] {:container "hoge"})
-  (run [this lang source-code] {:status 0 :stdout "outoutout" :stderr "errerrerr"}))
+  (run [this lang source-code]
+    {:status 0 :stdout "outoutout" :stderr "errerrerr"}))

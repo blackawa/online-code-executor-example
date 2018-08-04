@@ -1,6 +1,5 @@
 (ns online-code-executor-example.component
   (:require [bidi.ring :refer [make-handler]]
-            [buddy.sign.jwt :as jwt]
             [integrant.core :as ig]
             [muuntaja.middleware :refer [wrap-format]]
             [ring.adapter.jetty :as jetty]
